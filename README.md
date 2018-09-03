@@ -1,5 +1,50 @@
 # Day6WS
 
+## step by step
+
+1. create a new proj
+
+```bash
+ng new day6WS
+```
+
+2. Install angular material Design
+
+``` bash
+npm instal --save @angular/material
+@angular/cdk @angular/animations
+```
+```bash
+ng add @angular/material
+```
+
+3. Install gesture component
+
+```bash
+npm install --save hammerjs
+```
+4. generate new component
+```bash
+ng g c components/weder```
+
+5. create service module
+```bash
+ng g s services/wedersvc
+```
+6. import modules
+```app.module.ts
+Forms, Reactive Forms, MaterialModules,
+```
+```weder.ts
+import { FormGroup, FormControl } from '@angular/forms';
+
+export class WederComponent implements OnInit {
+  wederUpdate = FormGroup({
+  city: new FormControl(''),
+  weather: new FormControl('')
+});
+  ```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
 ## Development server
