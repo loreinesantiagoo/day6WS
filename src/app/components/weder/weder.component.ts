@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
+import { WederSvcService } from '../../services/wedersvc.service';
 
 @Component({
   selector: 'app-weder',
@@ -9,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 export class WederComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private wSvc: WederSvcService, private route: Router) { }
+  results = [];
 
   ngOnInit() {
+    this.results = this.wSvc.getWeather();
   }
 
 }

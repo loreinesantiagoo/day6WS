@@ -1,20 +1,39 @@
-<mat-grid-list>
-  <mat-grid-tile>
-    <h2>Search City Weather</h2>
-    <form [formGroup]="wederResult"></form>
-    <mat-form-field>
-      City:
-      <mat-icon>search</mat-icon>
-      <input type="text" formControlName="city" placeholder="keyword" matInput>
-      <button mat-button mat-raised-button color="accent">GET</button>
-    </mat-form-field>
-  </mat-grid-tile>
-
-  
+<div fxLayout="row" fxLayoutGap="20px">
+  <div></div>
   <div>
-    <mat-list-item>
-      <h4 mat-line>
-        current weather: {{ city.value }}
-      </h4>
-    </mat-list-item>
+    <mat-card >
+      <mat-card-header>
+        <mat-card-title>Search Your City Weather</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="" alt="Photo">
+      <mat-card-content>
+        <form [formGroup]="wederResult">
+          <mat-form-field>
+            <input matInput formControlName="city" placeholder="keyword">
+          </mat-form-field>
+        </form>
+        <p>
+          Temperature : {{results.temp}} F
+        </p>
+        <p>
+          Humidity : {{results.humidity}}
+        </p>
+        <p>
+          Pressure : {{results.pressure}}
+        </p>
+        <p>
+          description : {{desc}}
+        </p>
+      </mat-card-content>
+
+      <button mat-button><mat-icon>thumb_up</mat-icon></button>
+      <button mat-button><mat-icon>share</mat-icon></button>
+    </mat-card>
   </div>
+  <div></div>
+  <div></div>
+</div>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

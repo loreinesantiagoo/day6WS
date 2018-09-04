@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { WedersvcService } from './wedersvc.service';
+import { WedersvcService } from './services/wedersvc.service';
+
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,14 +14,20 @@ import { WedersvcService } from './wedersvc.service';
 })
 export class AppComponent implements OnInit {
   title = 'day6WS';
-  private results = [];
+  results = {
+    temp: 0,
+    humidity: 0,
+    pressure: 0,
+  };
+  desc = '';
 
   wederResult = new FormGroup({
     city: new FormControl(''),
     weather: new FormControl('')
   });
 
-  constructor(private service: WedersvcService) { }
+  constructor(private service: WedersvcService,
+  private router: Router) { }
 
   ngOnInit() {
     const cityField = this.wederResult.get('city');
@@ -33,8 +41,13 @@ export class AppComponent implements OnInit {
         .subscribe((data: any) => {
           console.log(data);
           this.results = data.results;
+          this.desc = data.weather[0].description;
         });
 
     });
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/home']);
   }
 }
